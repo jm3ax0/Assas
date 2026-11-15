@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+
+# Real dataset (40 MB) - recreate with data/convert_hf_dataset.py, see README section 4
+data/urls.csv
