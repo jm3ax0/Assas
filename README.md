@@ -37,12 +37,7 @@ Top features by importance: `path_depth`, `url_length`, `hostname_length`, `uses
 
 ## Screenshot
 
-<!-- Replace this placeholder: save a screenshot of the running app as docs/screenshot.png
-     and uncomment the line below. -->
-<!-- ![Assas web interface](docs/screenshot.png) -->
-
-*Screenshot coming soon.* To take one yourself: run the app (see [Quick start](#quick-start)),
-analyse a URL, and save the browser window as `docs/screenshot.png`.
+![Assas web interface flagging a look-alike PayPal URL as phishing with 97% risk](docs/screenshot.jpg)
 
 ## Quick start
 
