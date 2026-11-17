@@ -1,4 +1,9 @@
-# 🛡️ AI-Powered Phishing URL Detector
+# 🛡️ Assas – AI-Powered Phishing URL Detector
+
+[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+> ⚠️ **Defensive / educational use only.** Assas analyses URLs as text and never visits or attacks anything.
 
 A small, defensive cybersecurity project: you paste a URL, a machine-learning model
 (RandomForest, scikit-learn) classifies it as **Phishing** or **Legitimate**, gives a
@@ -30,8 +35,30 @@ Top features by importance: `path_depth`, `url_length`, `hostname_length`, `uses
 `num_digits`, `num_suspicious_words`. Model: RandomForest, 150 trees, max depth 24,
 15 string-only features. Saved model: `model/phishing_model.joblib` (58 MB, included).
 
+## Screenshot
+
+<!-- Replace this placeholder: save a screenshot of the running app as docs/screenshot.png
+     and uncomment the line below. -->
+<!-- ![Assas web interface](docs/screenshot.png) -->
+
+*Screenshot coming soon.* To take one yourself: run the app (see [Quick start](#quick-start)),
+analyse a URL, and save the browser window as `docs/screenshot.png`.
+
+## Quick start
+
+```bash
+git clone https://github.com/jm3ax0/Assas.git
+cd Assas
+pip install -r requirements.txt
+python app/app.py
 ```
-phishing-url-detector/
+Then open <http://127.0.0.1:5000> in your browser, paste a URL and press **Analyse**.
+A trained model is already included, so no training is needed. Full details below.
+
+## Project structure
+
+```
+Assas/
 ├── app/                  Flask web interface
 │   ├── app.py
 │   └── templates/index.html
@@ -45,13 +72,16 @@ phishing-url-detector/
 │   ├── train.py          trains, evaluates and saves the model
 │   └── phishing_model.joblib   (created by train.py)
 ├── requirements.txt
+├── LICENSE
+├── SECURITY.md
 └── README.md
 ```
 
 ## 1. Setup (Windows / macOS / Linux)
 
 ```bash
-cd phishing-url-detector
+git clone https://github.com/jm3ax0/Assas.git
+cd Assas
 python -m venv .venv
 ```
 Activate the virtual environment:
@@ -77,10 +107,18 @@ dataset as described in section 4.
 
 ## 3. Run the web app
 
+From the project root (with the virtual environment activated):
+
 ```bash
 python app/app.py
 ```
-Open <http://127.0.0.1:5000>, paste a URL, press *Analyse*.
+1. Wait for `Running on http://127.0.0.1:5000`.
+2. Open <http://127.0.0.1:5000> in your browser.
+3. Paste a URL and press **Analyse**. The card shows the verdict, the risk score and the
+   top reasons; *Show all extracted features* lists the 15 raw feature values.
+4. Stop the server with `Ctrl+C`.
+
+The server only listens on your own machine (`127.0.0.1`) and is meant for local use.
 
 There is also a JSON API:
 ```bash
@@ -110,7 +148,7 @@ Any other CSV with columns `url,label` (label = `1`/`phishing`/`bad` or
 | PhishTank verified feed | https://phishtank.org/developer_info.php |
 | UCI Phishing Websites | https://archive.ics.uci.edu/dataset/327/phishing+websites (already-extracted features, different format) |
 
-## 5. How the AI actually decides (for your motivation letter)
+## 5. How it works
 
 1. **Feature extraction** – a computer cannot "read" a URL, so `features/extract.py`
    measures 15 facts about it: length, number of dots, hyphens and digits, presence of
@@ -148,3 +186,9 @@ defence, not a replacement for browser protection, DNS filtering or user trainin
   Do not use a single verdict as proof that a site is safe or malicious.
 - Do not use it to harass site owners or to make automated blocking decisions without human review.
 - Datasets used must be public and licensed for research/educational use.
+
+See [SECURITY.md](SECURITY.md) to report a vulnerability.
+
+## License
+
+[MIT](LICENSE) © 2026 jm3ax0

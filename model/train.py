@@ -104,7 +104,7 @@ def main():
     print(f"  true Phish     {cm[1][0]:>9}  {cm[1][1]:>10}\n")
     print(classification_report(y_test, y_pred, target_names=["Legitimate", "Phishing"]))
 
-    # Which features did the forest rely on most? (useful for your motivation letter)
+    # Which features did the forest rely on most?
     print("  Feature importance (what the model pays attention to):")
     for name, imp in sorted(zip(FEATURE_NAMES, model.feature_importances_), key=lambda t: -t[1]):
         print(f"    {name:22} {'#' * int(imp * 60):<30} {imp:.3f}")
