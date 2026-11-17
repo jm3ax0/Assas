@@ -14,6 +14,7 @@ import sys
 from pathlib import Path
 
 import joblib
+import pandas as pd
 from flask import Flask, jsonify, render_template, request
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -65,7 +66,8 @@ def explain(features: dict, is_phishing: bool) -> list:
 
 def analyse(url: str) -> dict:
     features = extract_features(url)
-    row = [[features[n] for n in FEATURE_NAMES]]
+    # One-row table with the same column names the model was trained on.
+    row = pd.DataFrame([[features[n] for n in FEATURE_NAMES]], columns=FEATURE_NAMES)
     # predict_proba gives [P(legit), P(phishing)] -> we show P(phishing) as the risk.
     risk = float(model.predict_proba(row)[0][1])
     is_phishing = risk >= 0.5
