@@ -11,15 +11,11 @@ Only the latest commit on the `main` branch is supported.
 
 ## Reporting a vulnerability
 
-Please **do not open a public issue** for security problems.
-
-Report privately through GitHub instead:
-**Security** tab of this repository → **Report a vulnerability**.
-
-Include, if possible:
-- what the problem is and where (file / endpoint),
-- steps to reproduce,
-- the impact you expect.
+Open an [issue](https://github.com/jm3ax0/Assas/issues/new) with a title starting
+with **`[Security]`**. Describe the problem in general terms and where it is
+(file / endpoint), but **do not post working exploit code or step-by-step attack details**
+in the public issue. The maintainer will reply and, if needed, arrange a private way
+to share the full details.
 
 You should get a first reply within 7 days. Once a fix is available, the issue will be
 disclosed in the release notes with credit to the reporter (unless you prefer otherwise).
