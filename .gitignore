@@ -1,6 +1,40 @@
-.venv/
+# --- Python ---
 __pycache__/
-*.pyc
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
 
-# Real dataset (40 MB) - recreate with data/convert_hf_dataset.py, see README section 4
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+
+# --- Secrets / local config (never commit) ---
+.env
+.env.*
+*.pem
+*.key
+secrets.*
+kaggle.json
+
+# --- Large datasets (recreate with data/convert_hf_dataset.py, see README section 4) ---
 data/urls.csv
+data/*.json
+data/*.parquet
+data/*.zip
+data/*.gz
+# The small synthetic demo dataset IS committed:
+!data/sample_urls.csv
+
+# --- Models: only the released model is tracked ---
+model/*.joblib
+!model/phishing_model.joblib
+
+# --- Editor / OS / tooling ---
+.vscode/
+.idea/
+.claude/
+.DS_Store
+Thumbs.db
+desktop.ini
